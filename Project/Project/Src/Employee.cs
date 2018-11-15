@@ -19,7 +19,7 @@ namespace Project
 
         
         [ForeignKey("Accesslvl")]
-        public int? accesslvl { get; set; }
+        public Int32? accesslvl { get; set; }
         public ProjectRole Accesslvl { get; set; }
     }
 }
