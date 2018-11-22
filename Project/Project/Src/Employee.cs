@@ -21,5 +21,7 @@ namespace Project
         [ForeignKey("Accesslvl")]
         public Int32? accesslvl { get; set; }
         public ProjectRole Accesslvl { get; set; }
+
+        public Int32? WorkingGroupId { get; set; }
     }
 }

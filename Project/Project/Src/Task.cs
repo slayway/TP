@@ -13,6 +13,6 @@ namespace Project
         public DateTime DateOfCreate { get; set; }
         public DateTime PlanedImpDate { get; set; }
         public DateTime ActualImpDate { get; set; }
-        public List<Document> Documents { get; set; }
+        
     }
 }

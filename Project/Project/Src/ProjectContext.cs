@@ -17,6 +17,8 @@ namespace Project
         public DbSet<ProjectRole> ProjectRoles { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<WorkingGroup> WorkingGroups { get; set; }
+        public DbSet<Project> Projects { get; set; }
    
     }
 }
