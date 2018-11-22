@@ -39,7 +39,7 @@
             this.MaximumSize = new System.Drawing.Size(816, 489);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "ManagerForm";
-            this.Text = "Система управления проектами";
+            this.Text = "Система управления проектом";
             this.ResumeLayout(false);
 
         }

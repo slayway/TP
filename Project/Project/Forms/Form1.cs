@@ -32,7 +32,7 @@ namespace Project
 
                 try
                 {
-                    using (LoginContext db = new LoginContext())
+                    using (ProjectContext db = new ProjectContext())
                     {
                         var search = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.accesslvl).First();
                         
@@ -59,9 +59,9 @@ namespace Project
                         
                     }
                 }
-                catch(Exception)
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Неверный логин или пароль", "Ошибка");
+                    MessageBox.Show("Неверный логин или пароль" + ex, "Ошибка");
                     textBoxPass.Clear();
                 }
                 

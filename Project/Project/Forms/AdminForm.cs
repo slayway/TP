@@ -19,7 +19,7 @@ namespace Project
             InitializeComponent();
             try
             {
-                using (LoginContext db = new LoginContext())
+                using (ProjectContext db = new ProjectContext())
                 {
                     db.Employees.Load();
                     List<Employee> list = new List<Employee>(db.Employees.Local.ToList());
