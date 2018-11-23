@@ -13,6 +13,7 @@ namespace Project
         public DateTime DateOfCreate { get; set; }
         public DateTime PlanedImpDate { get; set; }
         public DateTime ActualImpDate { get; set; }
+        public String Status { get; set; }
         
     }
 }

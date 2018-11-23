@@ -10,7 +10,7 @@ namespace Project
     {
         public int Id { get; set; }
         public String Title { get; set; }
-        public float Price { get; set; }
+        public Decimal Price { get; set; }
         public String Description { get; set; }
         public int CustomerId { get; set; }
         public int TaskId { get; set; }
