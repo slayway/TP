@@ -12,7 +12,9 @@ namespace Project
 {
     public partial class AuthorizationForm : Form
     {
-        
+
+        private DBHelper db = new DBHelper();
+
         public AuthorizationForm()
         {
             InitializeComponent();        
@@ -29,41 +31,35 @@ namespace Project
                 login = textBoxLogin.Text;
                 password = textBoxPass.Text;
 
-                try
+                db.setLogin(login);
+                db.setPassword(password);
+                var search = db.signIn();
+
+                switch (search)
                 {
-                    using (ProjectContext db = new ProjectContext())
-                    {
-                        var search = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.accesslvl).First();
-                        
-                        switch (search)
-                        {
-                            case 1:
-                                WorkerForm w = new WorkerForm();
-                                w.Show();
-                                this.Hide();
-                                break;
-                              
-                            case 2:
-                                ManagerForm m = new ManagerForm();
-                                m.Show();
-                                this.Hide();
-                                break;
-                                
-                            case 3:
-                                AdminForm f = new AdminForm();
-                                f.Show();
-                                this.Hide();
-                                break;
-                        }                                         
-                        
-                    }
+                    case 1:
+                        WorkerForm w = new WorkerForm();
+                        w.Show();
+                        this.Hide();
+                        break;
+
+                    case 2:
+                        ManagerForm m = new ManagerForm();
+                        m.Show();
+                        this.Hide();
+                        break;
+
+                    case 3:
+                        AdminForm f = new AdminForm();
+                        f.Show();
+                        this.Hide();
+                        break;
+
+                    case 0:
+                        MessageBox.Show("Неверный логин или пароль!", "Ошибка");
+                        break;
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Неверный логин или пароль" + ex, "Ошибка");
-                    textBoxPass.Clear();
-                }
-                
+
             }
             else
             {

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
 
 namespace Project
 {
@@ -15,25 +14,18 @@ namespace Project
     {
         private BindingSource bs = new BindingSource();
         private BindingSource bs1 = new BindingSource();
+        private DBHelper db = new DBHelper();
+
         public AdminForm()
         {
             InitializeComponent();
-            try
-            {
-                using (ProjectContext db = new ProjectContext())
-                {
-                    db.Projects.Load();
-                    List<Project> list = new List<Project>(db.Projects.Local.ToList());                 
 
-                    bs.DataSource = list;
-                    dataGridView1.DataSource = bs;
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Ошибка");
-            }
-            
+            bs.DataSource = db.showProjects();
+            if (bs != null)
+                dataGridView1.DataSource = bs;
+            else
+                MessageBox.Show("Проекты отсутсвуют", "Уведомление");
+
         }
      
 
@@ -68,11 +60,7 @@ namespace Project
             catch(Exception ex)
             {
                 MessageBox.Show(id.ToString(), "Ошибка");
-            }
-
-            
-            
-                
+            }                                  
         }
 
         private void showTasksPJ(Int32 id)
