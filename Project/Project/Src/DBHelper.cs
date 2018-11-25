@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace Project
 {
@@ -41,7 +43,7 @@ namespace Project
             return search;
         }
 
-
+        //отображение проектов в лист
         public List<Project> showProjects()
         {
             List<Project> list = null;
@@ -60,6 +62,44 @@ namespace Project
             }
 
             return list;
+        }
+
+
+        //отображение задач по проекту
+        public BindingSource showTasksPJ(Int32 id)
+        {
+     
+            BindingSource bs = new BindingSource();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+
+                   /* var search = db.Tasks.Join(
+                           db.Projects,
+                           p => p.Id,
+                           t => t.TaskId,
+                           (task, project) => new
+                           {
+                               ID = project.TaskId,
+                               Описание = task.Description,
+                               ДатаСоздания = task.DateOfCreate,
+                               ПлановаяДатаРеализации = task.PlanedImpDate,
+                               ФактическаяДатаРеализации = task.ActualImpDate,
+                               Статус = task.Status,
+                           }).Where(p => p.ID == id).ToList(); */
+                   var search = 
+
+                    //bs.DataSource = search;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return bs;
         }
 
 

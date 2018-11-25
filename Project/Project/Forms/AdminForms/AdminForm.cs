@@ -24,7 +24,7 @@ namespace Project
             if (bs != null)
                 dataGridView1.DataSource = bs;
             else
-                MessageBox.Show("Проекты отсутсвуют", "Уведомление");
+                MessageBox.Show("Проекты отсутсвуют", "Сообщение");
 
         }
      
@@ -49,7 +49,14 @@ namespace Project
                     bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out id);
                     if (!converted)
                         return;
-                    showTasksPJ(id);
+
+                    var search = db.showTasksPJ(id);
+                    bs1.DataSource = search;
+
+                    if (bs1.Count > 0)
+                        dataGridView2.DataSource = bs1;
+                    else
+                        MessageBox.Show("Задачи для данного проекта отсутствуют" + id.ToString(), "Сообщение");
 
                 }
                 else
@@ -62,39 +69,6 @@ namespace Project
                 MessageBox.Show(id.ToString(), "Ошибка");
             }                                  
         }
-
-        private void showTasksPJ(Int32 id)
-        {
-            try
-            {
-                using (ProjectContext db = new ProjectContext())
-                {
-
-                    var search = db.Tasks.Join(
-                            db.Projects,
-                            p => p.Id,
-                            t => t.TaskId,
-                            (task, project) => new
-                            {
-                                ID = project.TaskId,
-                                Описание = task.Description,
-                                ДатаСоздания = task.DateOfCreate,
-                                ПлановаяДатаРеализации = task.PlanedImpDate,
-                                ФактическаяДатаРеализации = task.ActualImpDate,
-                                Статус = task.Status,
-                            }).Where(p => p.ID == id);
-
-                    bs1.DataSource = search.ToList();
-                    if (bs1.Count > 0)
-                        dataGridView2.DataSource = bs1;
-                    else
-                        MessageBox.Show("Задачи для данного проекта отсутствуют", "Сообщение");
-                }
-            }          
-            catch (Exception ex)
-            {
-                 MessageBox.Show(ex.ToString(), "Ошибка");
-            }           
-        }
+        
     }
 }
