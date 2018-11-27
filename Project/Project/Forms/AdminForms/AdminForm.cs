@@ -15,10 +15,12 @@ namespace Project
         private BindingSource bs = new BindingSource();
         private BindingSource bs1 = new BindingSource();
         private DBHelper db = new DBHelper();
-
+        private int projejctId = 0;
         public AdminForm()
         {
             InitializeComponent();
+
+            //menuStrip1.Visible = false;
 
             bs.DataSource = db.showProjects();
             if (bs != null)
@@ -27,7 +29,16 @@ namespace Project
                 MessageBox.Show("Проекты отсутсвуют", "Сообщение");
 
         }
-     
+        
+        public void menuVisibleTrue()
+        {
+            menuStrip1.Visible = true;
+        }
+        
+        public void menuVisibleFalse()
+        {
+            menuStrip1.Visible = false;
+        }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -38,7 +49,7 @@ namespace Project
 
         private void buttonShowTasksPJ_Click(object sender, EventArgs e)
         {
-            int id = 0;
+            
             try
             {
                 if (dataGridView1.SelectedRows.Count == 1)
@@ -46,18 +57,19 @@ namespace Project
                     int index = dataGridView1.SelectedRows[0].Index;
                   
 
-                    bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out id);
+                    bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out projejctId);
                     if (!converted)
                         return;
 
-                    var search = db.showTasksPJ(id);
+                    var search = db.showTasksPJ(projejctId);
                     bs1.DataSource = search;
 
                     if (bs1.Count > 0)
                         dataGridView2.DataSource = bs1;
                     else
-                        MessageBox.Show("Задачи для данного проекта отсутствуют" + id.ToString(), "Сообщение");
+                        MessageBox.Show("Задачи для данного проекта отсутствуют" + projejctId.ToString(), "Сообщение");
 
+                    //menuStrip1.Visible = true;
                 }
                 else
                 {
@@ -66,9 +78,35 @@ namespace Project
             }
             catch(Exception ex)
             {
-                MessageBox.Show(id.ToString(), "Ошибка");
+                MessageBox.Show(projejctId.ToString(), "Ошибка");
             }                                  
         }
-        
+
+        private void buttonCreatePj_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void поСоздателюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var search = db.sortTasks(projejctId, 1);
+            bs1.DataSource = search;
+            dataGridView2.DataSource = bs1;
+        }
+
+        private void заказчикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Список заказчиков";
+            label1.Location = new Point(600, 40);
+            dataGridView1.Location = new Point(350, 59);
+            dataGridView1.DataSource = db.showCustomers();
+            buttonCreatePj.Location = new Point(348, 405);
+
+            this.Controls.Remove(dataGridView2);
+            this.Controls.Remove(label2);
+            menuVisibleFalse();
+            this.Controls.Remove(button3);
+            this.Controls.Remove(buttonShowTasksPJ);           
+        }
     }
 }

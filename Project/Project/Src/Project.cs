@@ -12,9 +12,7 @@ namespace Project
         public String Title { get; set; }
         public Decimal Price { get; set; }
         public String Description { get; set; }
-        public int CustomerId { get; set; }
-        public int TaskId { get; set; }
-       
+        public int CustomerId { get; set; }   
         public int WorkingGroupId { get; set; }
     }
 }

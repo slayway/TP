@@ -37,3 +37,23 @@ D:\Технологии разработки ПО\Project\Project\obj\Debug\Proj
 D:\Технологии разработки ПО\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 D:\Технологии разработки ПО\Project\Project\obj\Debug\Project.exe
 D:\Технологии разработки ПО\Project\Project\obj\Debug\Project.pdb
+F:\ПО\Project\Project\bin\Debug\Src\ProjectDB.mdf
+F:\ПО\Project\Project\bin\Debug\Src\ProjectDB_log.ldf
+F:\ПО\Project\Project\bin\Debug\Project.exe.config
+F:\ПО\Project\Project\bin\Debug\Project.exe
+F:\ПО\Project\Project\bin\Debug\Project.pdb
+F:\ПО\Project\Project\bin\Debug\EntityFramework.dll
+F:\ПО\Project\Project\bin\Debug\EntityFramework.SqlServer.dll
+F:\ПО\Project\Project\bin\Debug\EntityFramework.xml
+F:\ПО\Project\Project\bin\Debug\EntityFramework.SqlServer.xml
+F:\ПО\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+F:\ПО\Project\Project\obj\Debug\Project.AdminForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.AuthorizationForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.ManagerForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.Properties.Resources.resources
+F:\ПО\Project\Project\obj\Debug\Project.WorkerForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.csproj.GenerateResource.cache
+F:\ПО\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+F:\ПО\Project\Project\obj\Debug\Project.csproj.CopyComplete
+F:\ПО\Project\Project\obj\Debug\Project.exe
+F:\ПО\Project\Project\obj\Debug\Project.pdb

@@ -14,6 +14,9 @@ namespace Project
         public DateTime PlanedImpDate { get; set; }
         public DateTime ActualImpDate { get; set; }
         public String Status { get; set; }
+        public int ProjectId { get; set; }
+        public int CreatorId { get; set; }
+        public int ExecutorId { get; set; }
         
     }
 }

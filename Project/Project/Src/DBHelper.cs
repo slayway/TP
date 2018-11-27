@@ -11,8 +11,9 @@ namespace Project
 {
     public class DBHelper
     {
-        private String login { get; set; }
-        private String password { get; set; }
+        private String login;
+        private String password;
+        private int logId;  
 
         public void setLogin(String login)
         {
@@ -33,6 +34,7 @@ namespace Project
                 using (ProjectContext db = new ProjectContext())
                 {
                     search = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.accesslvl).First();
+                    logId = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.Id).First();
                 }
             }
             catch (Exception)
@@ -88,13 +90,82 @@ namespace Project
                                ФактическаяДатаРеализации = task.ActualImpDate,
                                Статус = task.Status,
                            }).Where(p => p.ID == id).ToList(); */
-                   var search = 
+                           
+                   var search = db.Tasks
+                        .Where(c => c.ProjectId == id)
+                        .Select(c => new 
+                        {
+                                ID = c.Id,
+                                Desc = c.Description,
+                                CreateDate = c.DateOfCreate,
+                                PlanedDate = c.PlanedImpDate,
+                                //ActualDate = c.ActualImpDate,
+                                TaskStatus = c.Status
+                        }
+                        ).ToList();
 
-                    //bs.DataSource = search;
+                   bs.DataSource = search;
                     
                 }
             }
             catch (Exception ex)
+            {
+
+            }
+
+            return bs;
+        }
+
+        public BindingSource sortTasks(Int32 id, int choise)
+        {
+            BindingSource bs = new BindingSource();
+
+            using (ProjectContext db = new ProjectContext())
+            {
+                switch (choise)
+                {
+                    case 1:
+                        var search = db.Tasks.Join(
+                            db.Employees,
+                            t => t.CreatorId,
+                            e => e.Id,
+                            (task, emp) => new //c => c.ProjectId == id
+                            {
+                                ID = task.Id,
+                                Desc = task.Description,
+                                CreateDate = task.DateOfCreate,
+                                PlanedDate = task.PlanedImpDate,
+                                //ActualDate = c.ActualImpDate,
+                                Creator = emp.LastName,
+                                Executor = emp.LastName,
+                                TaskStatus = task.Status,
+                                ProjectID = task.ProjectId
+                            }
+                            ).Where(t => t.ProjectID == id)
+                            .OrderBy(t => t.Creator).ToList();
+                        bs.DataSource = search;
+                        break;
+                }
+
+                
+            }
+
+            return bs;
+        }
+
+        public BindingSource showCustomers()
+        {
+            BindingSource bs = new BindingSource();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Customers.Load();
+                    bs.DataSource = db.Customers.Local.ToList();
+
+                }
+            }
+            catch (Exception)
             {
 
             }
