@@ -9,9 +9,9 @@ namespace Project
     public class Document
     {
         public int Id { get; set; }
-        public String Title { get; set; }
+        public String Title { get; set; }      
         public byte[] FileData { get; set; }
-
         public int TaskId { get; set; }
+        public String Description { get; set; }
     }
 }
