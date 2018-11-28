@@ -231,7 +231,63 @@ namespace Project
 
             return bs;
         }
+        /// <summary>
+        /// отображение рабочих групп
+        /// </summary>
+        /// <returns></returns>
+        public BindingSource showWorkingGroups()
+        {
+            BindingSource bs = new BindingSource();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.WorkingGroups.Load();
+                    bs.DataSource = db.WorkingGroups.Select(c => new
+                    {
+                        ID = c.Id,
+                        Название = c.Title,
+                    }).ToList();
 
+                }
+            }
+            catch (Exception)
+            {
 
+            }
+
+            return bs;
+        }
+        /// <summary>
+        /// отображение сотрудников
+        /// </summary>
+        /// <returns></returns>
+        public BindingSource showEmployees()
+        {
+            BindingSource bs = new BindingSource();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Employees.Load();
+                    bs.DataSource = db.Employees.Select(c => new
+                    {
+                        ID = c.Id,
+                        Имя = c.FirstName,
+                        Фамилия = c.LastName,
+                        Телефон = c.Phone,
+                        Ур_Доступа = c.accesslvl,
+                        Id_РабГруппы = c.WorkingGroupId
+                    }).ToList();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return bs;
+        }
     }
 }
