@@ -17,12 +17,25 @@ namespace Project
 
         public AuthorizationForm()
         {
-            InitializeComponent();        
+            InitializeComponent();      
         }
 
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
+            signIn();
+        }
 
+        private void buttonSignIn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                signIn();
+            }
+                
+        }
+
+        private void signIn()
+        {
             string login;
             String password;
 
@@ -64,6 +77,14 @@ namespace Project
             else
             {
                 MessageBox.Show("Ошибка! Все поля должны быть заполнены.", "Ошибка");
+            }
+        }
+
+        private void textBoxPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                signIn();
             }
         }
     }

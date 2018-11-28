@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCreatePj = new System.Windows.Forms.Button();
@@ -54,17 +55,22 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Snow;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 59);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(636, 325);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Yellow;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(226, 40);
             this.label1.Name = "label1";
@@ -74,39 +80,46 @@
             // 
             // buttonCreatePj
             // 
+            this.buttonCreatePj.BackColor = System.Drawing.Color.Yellow;
             this.buttonCreatePj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCreatePj.Location = new System.Drawing.Point(21, 405);
             this.buttonCreatePj.Name = "buttonCreatePj";
             this.buttonCreatePj.Size = new System.Drawing.Size(89, 39);
             this.buttonCreatePj.TabIndex = 2;
             this.buttonCreatePj.Text = "Создать";
-            this.buttonCreatePj.UseVisualStyleBackColor = true;
+            this.buttonCreatePj.UseVisualStyleBackColor = false;
             this.buttonCreatePj.Click += new System.EventHandler(this.buttonCreatePj_Click);
             // 
             // buttonShowTasksPJ
             // 
+            this.buttonShowTasksPJ.BackColor = System.Drawing.Color.Yellow;
             this.buttonShowTasksPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonShowTasksPJ.Location = new System.Drawing.Point(229, 405);
             this.buttonShowTasksPJ.Name = "buttonShowTasksPJ";
             this.buttonShowTasksPJ.Size = new System.Drawing.Size(89, 39);
             this.buttonShowTasksPJ.TabIndex = 3;
             this.buttonShowTasksPJ.Text = "Просмотр задач";
-            this.buttonShowTasksPJ.UseVisualStyleBackColor = true;
+            this.buttonShowTasksPJ.UseVisualStyleBackColor = false;
             this.buttonShowTasksPJ.Click += new System.EventHandler(this.buttonShowTasksPJ_Click);
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.Snow;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(679, 60);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(526, 325);
             this.dataGridView2.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Yellow;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(889, 40);
             this.label2.Name = "label2";
@@ -116,16 +129,18 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.Yellow;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(836, 391);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 39);
             this.button3.TabIndex = 6;
             this.button3.Text = "Фильтр";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(195)))), ((int)(((byte)(226)))));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -142,38 +157,41 @@
             this.заказчикиToolStripMenuItem,
             this.сотрудникиToolStripMenuItem,
             this.оПриложенииToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::Project.Properties.Resources.menuIcon;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(13, 22);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
             this.toolStripDropDownButton1.Text = "Меню";
             // 
             // проектыToolStripMenuItem
             // 
             this.проектыToolStripMenuItem.Name = "проектыToolStripMenuItem";
-            this.проектыToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.проектыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.проектыToolStripMenuItem.Text = "Проекты";
+            this.проектыToolStripMenuItem.Click += new System.EventHandler(this.проектыToolStripMenuItem_Click);
             // 
             // заказчикиToolStripMenuItem
             // 
             this.заказчикиToolStripMenuItem.Name = "заказчикиToolStripMenuItem";
-            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.заказчикиToolStripMenuItem.Text = "Заказчики";
             this.заказчикиToolStripMenuItem.Click += new System.EventHandler(this.заказчикиToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             // 
             // оПриложенииToolStripMenuItem
             // 
             this.оПриложенииToolStripMenuItem.Name = "оПриложенииToolStripMenuItem";
-            this.оПриложенииToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.оПриложенииToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПриложенииToolStripMenuItem.Text = "О приложении";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(195)))), ((int)(((byte)(226)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.фильтрToolStripMenuItem});
@@ -205,18 +223,21 @@
             this.поДатеСозданияToolStripMenuItem.Name = "поДатеСозданияToolStripMenuItem";
             this.поДатеСозданияToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.поДатеСозданияToolStripMenuItem.Text = "По дате создания";
+            this.поДатеСозданияToolStripMenuItem.Click += new System.EventHandler(this.поДатеСозданияToolStripMenuItem_Click);
             // 
             // поТекущемуИспЛицуToolStripMenuItem
             // 
             this.поТекущемуИспЛицуToolStripMenuItem.Name = "поТекущемуИспЛицуToolStripMenuItem";
             this.поТекущемуИспЛицуToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.поТекущемуИспЛицуToolStripMenuItem.Text = "По текущему исп. лицу";
+            this.поТекущемуИспЛицуToolStripMenuItem.Click += new System.EventHandler(this.поТекущемуИспЛицуToolStripMenuItem_Click);
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackgroundImage = global::Project.Properties.Resources.bg;
             this.ClientSize = new System.Drawing.Size(1271, 478);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -227,6 +248,7 @@
             this.Controls.Add(this.buttonCreatePj);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1287, 517);
             this.MinimumSize = new System.Drawing.Size(1287, 517);
             this.Name = "AdminForm";

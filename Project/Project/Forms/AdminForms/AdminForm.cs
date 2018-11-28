@@ -19,8 +19,10 @@ namespace Project
         public AdminForm()
         {
             InitializeComponent();
+            DoubleBuffered = true;
 
-            //menuStrip1.Visible = false;
+
+            menuVisibleFalse();
 
             bs.DataSource = db.showProjects();
             if (bs != null)
@@ -69,7 +71,7 @@ namespace Project
                     else
                         MessageBox.Show("Задачи для данного проекта отсутствуют" + projejctId.ToString(), "Сообщение");
 
-                    //menuStrip1.Visible = true;
+                    menuVisibleTrue();
                 }
                 else
                 {
@@ -107,6 +109,35 @@ namespace Project
             menuVisibleFalse();
             this.Controls.Remove(button3);
             this.Controls.Remove(buttonShowTasksPJ);           
+        }
+
+        private void поДатеСозданияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var search = db.sortTasks(projejctId, 2);
+            bs1.DataSource = search;
+            dataGridView2.DataSource = bs1;
+        }
+
+        private void поТекущемуИспЛицуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var search = db.sortTasks(projejctId, 3);
+            bs1.DataSource = search;
+            dataGridView2.DataSource = bs1;
+        }
+
+        private void проектыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Список проектов";
+            label1.Location = new Point(226, 40);
+            dataGridView1.Location = new Point(21, 59);
+            dataGridView1.DataSource = db.showProjects();
+            buttonCreatePj.Location = new Point(21, 405);
+
+            this.Controls.Add(dataGridView2);
+            this.Controls.Add(label2);
+            menuVisibleFalse();
+            this.Controls.Add(button3);
+            this.Controls.Add(buttonShowTasksPJ);
         }
     }
 }

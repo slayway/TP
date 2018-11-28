@@ -13,7 +13,7 @@ namespace Project
     {
         private String login;
         private String password;
-        private int logId;  
+        private int? logId;  
 
         public void setLogin(String login)
         {
@@ -25,7 +25,10 @@ namespace Project
             this.password = password;
         }
 
-        //авторизация
+        /// <summary>
+        /// авторизация
+        /// </summary>
+        /// <returns></returns>
         public int? signIn()
         {
             int? search = 0;
@@ -34,7 +37,7 @@ namespace Project
                 using (ProjectContext db = new ProjectContext())
                 {
                     search = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.accesslvl).First();
-                    logId = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.Id).First();
+                    logId = search;
                 }
             }
             catch (Exception)
@@ -45,17 +48,28 @@ namespace Project
             return search;
         }
 
-        //отображение проектов в лист
-        public List<Project> showProjects()
+        /// <summary>
+        /// отображение проектов в лист
+        /// </summary>
+        /// <returns></returns>
+        public BindingSource showProjects()
         {
-            List<Project> list = null;
+            BindingSource bs = new BindingSource();
             try
             {
                 using (ProjectContext db = new ProjectContext())
                 {
                     db.Projects.Load();
-                    list = db.Projects.Local.ToList();
-
+                    var search = db.Projects.Select(c => new
+                    {
+                        ID = c.Id,
+                        Название = c.Title,
+                        Цена = c.Price,
+                        Описание = c.Description,
+                        ID_Заказчика = c.CustomerId,
+                        ID_РабГруппы = c.WorkingGroupId                     
+                    }).ToList();
+                    bs.DataSource = search;
                 }
             }
             catch (Exception)
@@ -63,11 +77,13 @@ namespace Project
 
             }
 
-            return list;
+            return bs;
         }
 
-
-        //отображение задач по проекту
+        /// <summary>
+        /// отображение задач по проекту
+        /// </summary>
+        /// <returns></returns>
         public BindingSource showTasksPJ(Int32 id)
         {
      
@@ -96,11 +112,13 @@ namespace Project
                         .Select(c => new 
                         {
                                 ID = c.Id,
-                                Desc = c.Description,
-                                CreateDate = c.DateOfCreate,
-                                PlanedDate = c.PlanedImpDate,
+                                Описание = c.Description,
+                                Дата_создания = c.DateOfCreate,
+                                План_дата_заверш = c.PlanedImpDate,
                                 //ActualDate = c.ActualImpDate,
-                                TaskStatus = c.Status
+                                Статус = c.Status,
+                                ID_Создателя = c.CreatorId,
+                                ID_Исполнителя = c.ExecutorId
                         }
                         ).ToList();
 
@@ -125,34 +143,71 @@ namespace Project
                 switch (choise)
                 {
                     case 1:
-                        var search = db.Tasks.Join(
-                            db.Employees,
-                            t => t.CreatorId,
-                            e => e.Id,
-                            (task, emp) => new //c => c.ProjectId == id
+                  
+                      var search = db.Tasks
+                            .Where(c => c.ProjectId == id)
+                            .Select(c => new
                             {
-                                ID = task.Id,
-                                Desc = task.Description,
-                                CreateDate = task.DateOfCreate,
-                                PlanedDate = task.PlanedImpDate,
-                                //ActualDate = c.ActualImpDate,
-                                Creator = emp.LastName,
-                                Executor = emp.LastName,
-                                TaskStatus = task.Status,
-                                ProjectID = task.ProjectId
+                                ID = c.Id,
+                                Описание = c.Description,
+                                Дата_создания = c.DateOfCreate,
+                                План_дата_заверш = c.PlanedImpDate,
+                              //ActualDate = c.ActualImpDate,
+                                Статус = c.Status,
+                                ID_Создателя = c.CreatorId,
+                                ID_Исполнителя = c.ExecutorId
                             }
-                            ).Where(t => t.ProjectID == id)
-                            .OrderBy(t => t.Creator).ToList();
+                            ).OrderBy(t => t.ID_Создателя).ToList();
                         bs.DataSource = search;
                         break;
-                }
 
-                
+                    case 2:
+                        search = db.Tasks
+                            .Where(c => c.ProjectId == id)
+                            .Select(c => new
+                            {
+                                ID = c.Id,
+                                Описание = c.Description,
+                                Дата_создания = c.DateOfCreate,
+                                План_дата_заверш = c.PlanedImpDate,
+                                //ActualDate = c.ActualImpDate,
+                                Статус = c.Status,
+                                ID_Создателя = c.CreatorId,
+                                ID_Исполнителя = c.ExecutorId
+                            }
+                            ).OrderBy(t => t.Дата_создания).ToList();
+                        bs.DataSource = search;
+                        break;
+                    case 3:
+                        search = db.Tasks
+                            .Where(c => c.ProjectId == id)
+                            .Select(c => new
+                            {
+                                ID = c.Id,
+                                Описание = c.Description,
+                                Дата_создания = c.DateOfCreate,
+                                План_дата_заверш = c.PlanedImpDate,
+                                //ActualDate = c.ActualImpDate,
+                                Статус = c.Status,
+                                ID_Создателя = c.CreatorId,
+                                ID_Исполнителя = c.ExecutorId
+                            }
+                            ).OrderBy(t => t.ID_Исполнителя).ToList();
+                        bs.DataSource = search;
+                        break;
+
+                }
+               
             }
 
             return bs;
         }
+        
 
+        /// <summary>
+        /// отображение заказчиков
+        /// </summary>
+        /// <returns></returns>
         public BindingSource showCustomers()
         {
             BindingSource bs = new BindingSource();
@@ -161,7 +216,11 @@ namespace Project
                 using (ProjectContext db = new ProjectContext())
                 {
                     db.Customers.Load();
-                    bs.DataSource = db.Customers.Local.ToList();
+                    bs.DataSource = db.Customers.Select(c => new
+                    {
+                        ID = c.Id,
+                        Организация = c.Organization
+                    }).ToList();
 
                 }
             }

@@ -68,6 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Src\DBHelper.cs" />
     <Compile Include="Src\Document.cs" />
     <Compile Include="Src\Project.cs" />
@@ -115,6 +120,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WorkerForms\WorkerForm.resx">
       <DependentUpon>WorkerForm.cs</DependentUpon>
@@ -151,6 +157,7 @@
   <ItemGroup>
     <None Include="Resources\menuIcon.png" />
     <None Include="Resources\menuIcon.jpg" />
+    <None Include="Resources\bg.png" />
     <Content Include="Src\ProjectDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

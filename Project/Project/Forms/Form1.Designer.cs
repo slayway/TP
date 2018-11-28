@@ -53,6 +53,7 @@
             this.textBoxPass.Size = new System.Drawing.Size(252, 20);
             this.textBoxPass.TabIndex = 1;
             this.textBoxPass.UseSystemPasswordChar = true;
+            this.textBoxPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPass_KeyDown);
             // 
             // label1
             // 
@@ -86,6 +87,7 @@
             this.buttonSignIn.Text = "Вход";
             this.buttonSignIn.UseVisualStyleBackColor = false;
             this.buttonSignIn.Click += new System.EventHandler(this.buttonSignIn_Click);
+            this.buttonSignIn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonSignIn_KeyDown);
             // 
             // label3
             // 
