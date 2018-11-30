@@ -206,6 +206,7 @@
             // 
             // фильтрToolStripMenuItem
             // 
+            this.фильтрToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.фильтрToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.поСоздателюToolStripMenuItem,
             this.поДатеСозданияToolStripMenuItem,
@@ -216,6 +217,7 @@
             // 
             // поСоздателюToolStripMenuItem
             // 
+            this.поСоздателюToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поСоздателюToolStripMenuItem.Name = "поСоздателюToolStripMenuItem";
             this.поСоздателюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.поСоздателюToolStripMenuItem.Text = "По создателю";
@@ -223,6 +225,7 @@
             // 
             // поДатеСозданияToolStripMenuItem
             // 
+            this.поДатеСозданияToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поДатеСозданияToolStripMenuItem.Name = "поДатеСозданияToolStripMenuItem";
             this.поДатеСозданияToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.поДатеСозданияToolStripMenuItem.Text = "По дате создания";
@@ -230,6 +233,7 @@
             // 
             // поТекущемуИспЛицуToolStripMenuItem
             // 
+            this.поТекущемуИспЛицуToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поТекущемуИспЛицуToolStripMenuItem.Name = "поТекущемуИспЛицуToolStripMenuItem";
             this.поТекущемуИспЛицуToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.поТекущемуИспЛицуToolStripMenuItem.Text = "По текущему исп. лицу";
@@ -237,6 +241,7 @@
             // 
             // документыToolStripMenuItem
             // 
+            this.документыToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
             this.документыToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
             this.документыToolStripMenuItem.Text = "Документы";
@@ -244,6 +249,7 @@
             // 
             // календарьToolStripMenuItem
             // 
+            this.календарьToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.календарьToolStripMenuItem.Name = "календарьToolStripMenuItem";
             this.календарьToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
             this.календарьToolStripMenuItem.Text = "Календарь";
@@ -296,7 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(195)))), ((int)(((byte)(226)))));
             this.BackgroundImage = global::Project.Properties.Resources.bg;
             this.ClientSize = new System.Drawing.Size(1271, 478);
             this.Controls.Add(this.buttonChange2);

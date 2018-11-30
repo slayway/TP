@@ -6,6 +6,7 @@ using System.Data;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Project
 {
@@ -289,7 +290,10 @@ namespace Project
 
             return bs;
         }
-
+        /// <summary>
+        /// отображение документов
+        /// </summary>
+        /// <returns></returns>
         public BindingSource showDocuments(int id)
         {
             BindingSource bs = new BindingSource();
@@ -303,7 +307,6 @@ namespace Project
                     {
                         ID = c.Id,
                         Название = c.Title,
-                        Файл = c.FileData,
                         Описание = c.Description
                     }).ToList();
 
@@ -316,7 +319,77 @@ namespace Project
 
             return bs;
         }
+        /// <summary>
+        /// проверка существует ли задача с таким id
+        /// </summary>
+        /// <returns></returns>
+        public bool checkTaskId(int id)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Documents.Load();
+                    var search = db.Tasks.Where(c => c.Id == id)
+                        .Select(c => c.Id).First();
+                    if (search != 0)
+                        result = true;
+                }
+            }
+            catch (Exception)
+            {
 
-        
+            }
+            
+            return result;
+        }     
+        /// <summary>
+        /// добавить документ в бд
+        /// </summary>
+        /// <returns></returns>
+        public bool addDocument(Document doc)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Documents.Add(doc);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// сохранение документа на компьютер
+        /// </summary>
+        /// <param name="id"></param>
+        public void saveDoc(int id, string path)
+        {
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    Document e = db.Documents.FirstOrDefault(f => f.Id == id);
+                    if(e != null)
+                    {
+                        FileStream fs = new FileStream(path, FileMode.CreateNew);
+                        fs.Write(e.FileData, 0, e.FileData.Length);
+                        fs.Close();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }
