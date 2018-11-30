@@ -23,15 +23,17 @@ namespace Project
             InitializeComponent();
             DoubleBuffered = true;
             formTrack = 1;
+            showProjects();
+            menuVisibleFalse();           
+        }
 
-            menuVisibleFalse();
-
+        public void showProjects()
+        {
             bs.DataSource = db.showProjects();
             if (bs != null)
                 dataGridView1.DataSource = bs;
             else
                 MessageBox.Show("Проекты отсутсвуют", "Сообщение");
-
         }
 
         public void menuVisibleTrue()
@@ -80,12 +82,14 @@ namespace Project
                     MessageBox.Show("Ошибка! Вы не можете выбрать больше одной строки.", "Ошибка");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(projejctId.ToString(), "Ошибка");
             }
         }
-
+        /// <summary>
+        /// новый проект
+        /// </summary>
         private void buttonCreatePj_Click(object sender, EventArgs e)
         {
 
@@ -97,7 +101,9 @@ namespace Project
             bs1.DataSource = search;
             dataGridView2.DataSource = bs1;
         }
-
+        /// <summary>
+        /// перерисовка формы для пункта заказчики
+        /// </summary>
         private void заказчикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             label1.Text = "Список заказчиков";
@@ -133,7 +139,9 @@ namespace Project
             bs1.DataSource = search;
             dataGridView2.DataSource = bs1;
         }
-
+        /// <summary>
+        /// перерисовка формы для пункта проекты
+        /// </summary>
         private void проектыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             label1.Text = "Список проектов";
@@ -159,7 +167,9 @@ namespace Project
             label2.Text = "Список задач";                    
             dataGridView2.DataSource = null;
         }
-
+        /// <summary>
+        /// перерисовка формы для пункта сотрудники
+        /// </summary>
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             label1.Text = "Список сотрудников";
@@ -185,12 +195,12 @@ namespace Project
 
             menuVisibleFalse();
             formTrack = 3;
-
         }
-
+        /// <summary>
+        /// открытие формы документов
+        /// </summary>     
         private void документыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {           
             try
             {
                 if (dataGridView2.SelectedRows.Count == 1)
@@ -213,10 +223,15 @@ namespace Project
                     MessageBox.Show("Ошибка! Вы не можете выбрать больше одной строки.", "Ошибка");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(taskId.ToString(), "Ошибка");
             }          
+        }
+
+        private void buttonDel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

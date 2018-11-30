@@ -103,6 +103,7 @@
             this.buttonDel.TabIndex = 7;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = false;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // textBox1
             // 

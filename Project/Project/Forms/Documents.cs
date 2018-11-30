@@ -88,6 +88,7 @@ namespace Project
         {          
             String tittle;
             String description;
+            String ext;
             byte[] fileData;
             
 
@@ -101,9 +102,10 @@ namespace Project
                     fs.Read(fileData, 0, fileData.Length);
                     fs.Close();
                     tittle = textBox1.Text;
-                    description = textBox2.Text; 
+                    description = textBox2.Text;
+                    ext = Path.GetExtension(openFile.FileName);
                     
-                    Document doc = new Document(tittle, description, taskId, fileData);
+                    Document doc = new Document(tittle, description, taskId, fileData, ext);
                     if (db.addDocument(doc))
                     {
                         showDocs(taskId);
@@ -145,18 +147,48 @@ namespace Project
                     MessageBox.Show("Ошибка! Вы не можете выбрать больше одной строки.", "Ошибка");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show(docId.ToString(), "Ошибка");
             }
 
             SaveFileDialog sf = new SaveFileDialog();
-            sf.Filter = "Все файлы(*.*)|*.*";
+            sf.DefaultExt = db.getExt(docId);
             result = sf.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                db.saveDoc(docId, sf.FileName);
+                if (db.saveDoc(docId, sf.FileName))
+                    MessageBox.Show("Файл успешно сохранён", "Сообщение");
             }         
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            int docId = 0;
+            try
+            {
+                if (dataGridView1.SelectedRows.Count == 1)
+                {
+                    int index = dataGridView1.SelectedRows[0].Index;
+
+
+                    bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out docId);
+                    if (!converted)
+                        return;
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка! Вы не можете выбрать больше одной строки.", "Ошибка");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(docId.ToString(), "Ошибка");
+            }
+
+            if (db.deleteDoc(docId))
+                MessageBox.Show("Файл успешно удалён", "Сообщение");
+            showDocs(taskId);
         }
     }
 }

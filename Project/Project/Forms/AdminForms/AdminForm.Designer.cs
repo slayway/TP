@@ -172,21 +172,21 @@
             // проектыToolStripMenuItem
             // 
             this.проектыToolStripMenuItem.Name = "проектыToolStripMenuItem";
-            this.проектыToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.проектыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.проектыToolStripMenuItem.Text = "Проекты";
             this.проектыToolStripMenuItem.Click += new System.EventHandler(this.проектыToolStripMenuItem_Click);
             // 
             // заказчикиToolStripMenuItem
             // 
             this.заказчикиToolStripMenuItem.Name = "заказчикиToolStripMenuItem";
-            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.заказчикиToolStripMenuItem.Text = "Заказчики";
             this.заказчикиToolStripMenuItem.Click += new System.EventHandler(this.заказчикиToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
             // 
@@ -264,6 +264,7 @@
             this.buttonDel1.TabIndex = 9;
             this.buttonDel1.Text = "Удалить";
             this.buttonDel1.UseVisualStyleBackColor = false;
+            this.buttonDel1.Click += new System.EventHandler(this.buttonDel1_Click);
             // 
             // buttonDel2
             // 

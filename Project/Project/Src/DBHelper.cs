@@ -116,7 +116,7 @@ namespace Project
                                 Описание = c.Description,
                                 Дата_создания = c.DateOfCreate,
                                 План_дата_заверш = c.PlanedImpDate,
-                                //ActualDate = c.ActualImpDate,
+                                //ДатаЗавершения = c.ActualImpDate,
                                 Статус = c.Status,
                                 ID_Создателя = c.CreatorId,
                                 ID_Исполнителя = c.ExecutorId
@@ -127,14 +127,17 @@ namespace Project
                     
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
 
             return bs;
         }
-
+        /// <summary>
+        /// сортировка задач по заданному фильтру
+        /// </summary>
+        /// <returns></returns>
         public BindingSource sortTasks(Int32 id, int choise)
         {
             BindingSource bs = new BindingSource();
@@ -187,8 +190,8 @@ namespace Project
                                 ID = c.Id,
                                 Описание = c.Description,
                                 Дата_создания = c.DateOfCreate,
-                                План_дата_заверш = c.PlanedImpDate,
-                                //ActualDate = c.ActualImpDate,
+                                План_дата_заверш = c.PlanedImpDate,                              
+                                //АктуальнаяДата = c.ActualImpDate,
                                 Статус = c.Status,
                                 ID_Создателя = c.CreatorId,
                                 ID_Исполнителя = c.ExecutorId
@@ -371,18 +374,21 @@ namespace Project
         /// сохранение документа на компьютер
         /// </summary>
         /// <param name="id"></param>
-        public void saveDoc(int id, string path)
+        public bool saveDoc(int id, string path)
         {
+            bool result = false;
             try
             {
                 using (ProjectContext db = new ProjectContext())
                 {
                     Document e = db.Documents.FirstOrDefault(f => f.Id == id);
                     if(e != null)
-                    {
+                    {                   
                         FileStream fs = new FileStream(path, FileMode.CreateNew);
                         fs.Write(e.FileData, 0, e.FileData.Length);
                         fs.Close();
+                        result = true;
+                        
                     }
                 }
             }
@@ -390,6 +396,54 @@ namespace Project
             {
 
             }
+            return result;
+        }
+        /// <summary>
+        /// получение расширения документа
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public String getExt(int id)
+        {
+            String result = null;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    Document e = db.Documents.FirstOrDefault(f => f.Id == id);
+                    if (e != null)
+                    {
+                        result = e.ext;
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return result;
+        }
+
+        public bool deleteDoc(int id)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    Document e = db.Documents.FirstOrDefault(f => f.Id == id);
+                    db.Documents.Remove(e);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
         }
     }
 }

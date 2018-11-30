@@ -13,13 +13,15 @@ namespace Project
         public byte[] FileData { get; set; }
         public int TaskId { get; set; }
         public String Description { get; set; }
+        public String ext { get; set; }
 
-        public Document( String Title, String Description, int TaskId, byte[] FileData)
+        public Document( String Title, String Description, int TaskId, byte[] FileData, String ext)
         {
             this.Title = Title;
             this.Description = Description;
             this.TaskId = TaskId;
             this.FileData = FileData;
+            this.ext = ext;
         }
         public Document()
         {
