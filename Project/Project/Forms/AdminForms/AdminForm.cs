@@ -17,6 +17,7 @@ namespace Project
         private DBHelper db = new DBHelper();
         private int projejctId = 0;
         private int formTrack = 0;
+        private int taskId = 0;
         public AdminForm()
         {
             InitializeComponent();
@@ -185,6 +186,37 @@ namespace Project
             menuVisibleFalse();
             formTrack = 3;
 
+        }
+
+        private void документыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                if (dataGridView2.SelectedRows.Count == 1)
+                {
+                    int index = dataGridView2.SelectedRows[0].Index;
+
+
+                    bool converted = Int32.TryParse(dataGridView2[0, index].Value.ToString(), out taskId);
+                    if (!converted)
+                        return;
+
+                    Documents f = new Documents(taskId);
+                    DialogResult result = f.ShowDialog(this);
+
+                    if (result == DialogResult.Cancel)
+                        return;
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка! Вы не можете выбрать больше одной строки.", "Ошибка");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(taskId.ToString(), "Ошибка");
+            }          
         }
     }
 }

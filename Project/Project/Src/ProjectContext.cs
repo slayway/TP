@@ -19,6 +19,7 @@ namespace Project
         public DbSet<Task> Tasks { get; set; }
         public DbSet<WorkingGroup> WorkingGroups { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Document> Documents { get; set; }
    
     }
 }

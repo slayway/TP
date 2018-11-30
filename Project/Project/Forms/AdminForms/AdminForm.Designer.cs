@@ -46,12 +46,12 @@
             this.поСоздателюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поДатеСозданияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поТекущемуИспЛицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.календарьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonDel1 = new System.Windows.Forms.Button();
             this.buttonDel2 = new System.Windows.Forms.Button();
             this.buttonChange1 = new System.Windows.Forms.Button();
             this.buttonChange2 = new System.Windows.Forms.Button();
-            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.календарьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -66,6 +66,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Snow;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 59);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -115,6 +116,7 @@
             this.dataGridView2.BackgroundColor = System.Drawing.Color.Snow;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(679, 60);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -233,6 +235,19 @@
             this.поТекущемуИспЛицуToolStripMenuItem.Text = "По текущему исп. лицу";
             this.поТекущемуИспЛицуToolStripMenuItem.Click += new System.EventHandler(this.поТекущемуИспЛицуToolStripMenuItem_Click);
             // 
+            // документыToolStripMenuItem
+            // 
+            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
+            this.документыToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
+            this.документыToolStripMenuItem.Text = "Документы";
+            this.документыToolStripMenuItem.Click += new System.EventHandler(this.документыToolStripMenuItem_Click);
+            // 
+            // календарьToolStripMenuItem
+            // 
+            this.календарьToolStripMenuItem.Name = "календарьToolStripMenuItem";
+            this.календарьToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
+            this.календарьToolStripMenuItem.Text = "Календарь";
+            // 
             // buttonDel1
             // 
             this.buttonDel1.BackColor = System.Drawing.Color.Yellow;
@@ -276,18 +291,6 @@
             this.buttonChange2.TabIndex = 12;
             this.buttonChange2.Text = "Изменить";
             this.buttonChange2.UseVisualStyleBackColor = false;
-            // 
-            // документыToolStripMenuItem
-            // 
-            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
-            this.документыToolStripMenuItem.Text = "Документы";
-            // 
-            // календарьToolStripMenuItem
-            // 
-            this.календарьToolStripMenuItem.Name = "календарьToolStripMenuItem";
-            this.календарьToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
-            this.календарьToolStripMenuItem.Text = "Календарь";
             // 
             // AdminForm
             // 

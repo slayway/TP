@@ -289,5 +289,34 @@ namespace Project
 
             return bs;
         }
+
+        public BindingSource showDocuments(int id)
+        {
+            BindingSource bs = new BindingSource();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Documents.Load();
+                    bs.DataSource = db.Documents.Where(c => c.TaskId == id)
+                        .Select(c => new
+                    {
+                        ID = c.Id,
+                        Название = c.Title,
+                        Файл = c.FileData,
+                        Описание = c.Description
+                    }).ToList();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return bs;
+        }
+
+        
     }
 }

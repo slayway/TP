@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Documents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Documents.Designer.cs">
+      <DependentUpon>Documents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +116,9 @@
     <Compile Include="Src\WorkingGroup.cs" />
     <EmbeddedResource Include="Forms\AdminForms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Documents.resx">
+      <DependentUpon>Documents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
