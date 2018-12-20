@@ -23,14 +23,8 @@ namespace Project
             Application.Exit();
 
         }
-        private void visiblePictureBox()
-        {
-            pictureBox1.Visible = false;
-        }
-
         private void заказчикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            visiblePictureBox();
             CustomersForm custForm = new CustomersForm();
             custForm.MdiParent = this;
             custForm.Show();           
@@ -38,7 +32,6 @@ namespace Project
  
         private void проектыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            visiblePictureBox();
             ProjectsForm pjForm = new ProjectsForm();
             pjForm.MdiParent = this;
             pjForm.Show();
@@ -46,7 +39,6 @@ namespace Project
         }
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             visiblePictureBox();
              EmployeesForm empForm = new EmployeesForm();                
              empForm.MdiParent = this;
              empForm.Show();

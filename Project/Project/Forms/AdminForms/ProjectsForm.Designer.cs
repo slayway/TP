@@ -73,6 +73,7 @@
             this.buttonChange1.TabIndex = 22;
             this.buttonChange1.Text = "Изменить";
             this.buttonChange1.UseVisualStyleBackColor = false;
+            this.buttonChange1.Click += new System.EventHandler(this.buttonChange1_Click);
             // 
             // buttonDel2
             // 
@@ -95,6 +96,7 @@
             this.buttonDel1.TabIndex = 20;
             this.buttonDel1.Text = "Удалить";
             this.buttonDel1.UseVisualStyleBackColor = false;
+            this.buttonDel1.Click += new System.EventHandler(this.buttonDel1_Click);
             // 
             // buttonAdd2
             // 
@@ -106,6 +108,7 @@
             this.buttonAdd2.TabIndex = 19;
             this.buttonAdd2.Text = "Добавить";
             this.buttonAdd2.UseVisualStyleBackColor = false;
+            this.buttonAdd2.Click += new System.EventHandler(this.buttonAdd2_Click);
             // 
             // label2
             // 
@@ -155,6 +158,7 @@
             this.buttonAdd1.TabIndex = 15;
             this.buttonAdd1.Text = "Добавить";
             this.buttonAdd1.UseVisualStyleBackColor = false;
+            this.buttonAdd1.Click += new System.EventHandler(this.buttonAdd1_Click);
             // 
             // label1
             // 
@@ -184,6 +188,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(195)))), ((int)(((byte)(226)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -198,20 +203,22 @@
             // 
             // фильтрToolStripMenuItem
             // 
+            this.фильтрToolStripMenuItem.AutoSize = false;
             this.фильтрToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.фильтрToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.поСоздателюToolStripMenuItem,
             this.поДатеСозданияToolStripMenuItem,
             this.поТекущемуИспЛицуToolStripMenuItem});
+            this.фильтрToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.фильтрToolStripMenuItem.Name = "фильтрToolStripMenuItem";
-            this.фильтрToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
+            this.фильтрToolStripMenuItem.Size = new System.Drawing.Size(119, 30);
             this.фильтрToolStripMenuItem.Text = "Фильтр";
             // 
             // поСоздателюToolStripMenuItem
             // 
             this.поСоздателюToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поСоздателюToolStripMenuItem.Name = "поСоздателюToolStripMenuItem";
-            this.поСоздателюToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.поСоздателюToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.поСоздателюToolStripMenuItem.Text = "По создателю";
             this.поСоздателюToolStripMenuItem.Click += new System.EventHandler(this.поСоздателюToolStripMenuItem_Click);
             // 
@@ -219,7 +226,7 @@
             // 
             this.поДатеСозданияToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поДатеСозданияToolStripMenuItem.Name = "поДатеСозданияToolStripMenuItem";
-            this.поДатеСозданияToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.поДатеСозданияToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.поДатеСозданияToolStripMenuItem.Text = "По дате создания";
             this.поДатеСозданияToolStripMenuItem.Click += new System.EventHandler(this.поДатеСозданияToolStripMenuItem_Click);
             // 
@@ -227,23 +234,27 @@
             // 
             this.поТекущемуИспЛицуToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.поТекущемуИспЛицуToolStripMenuItem.Name = "поТекущемуИспЛицуToolStripMenuItem";
-            this.поТекущемуИспЛицуToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.поТекущемуИспЛицуToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.поТекущемуИспЛицуToolStripMenuItem.Text = "По текущему исп. лицу";
             this.поТекущемуИспЛицуToolStripMenuItem.Click += new System.EventHandler(this.поТекущемуИспЛицуToolStripMenuItem_Click);
             // 
             // документыToolStripMenuItem
             // 
+            this.документыToolStripMenuItem.AutoSize = false;
             this.документыToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
+            this.документыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
+            this.документыToolStripMenuItem.Size = new System.Drawing.Size(119, 30);
             this.документыToolStripMenuItem.Text = "Документы";
             this.документыToolStripMenuItem.Click += new System.EventHandler(this.документыToolStripMenuItem_Click);
             // 
             // календарьToolStripMenuItem
             // 
+            this.календарьToolStripMenuItem.AutoSize = false;
             this.календарьToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
+            this.календарьToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.календарьToolStripMenuItem.Name = "календарьToolStripMenuItem";
-            this.календарьToolStripMenuItem.Size = new System.Drawing.Size(113, 19);
+            this.календарьToolStripMenuItem.Size = new System.Drawing.Size(119, 30);
             this.календарьToolStripMenuItem.Text = "Календарь";
             // 
             // ProjectsForm

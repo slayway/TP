@@ -14,7 +14,7 @@ namespace Project
     {
         private String login;
         private String password;
-        private int? logId;  
+        private static int logId;  
 
         public void setLogin(String login)
         {
@@ -26,6 +26,15 @@ namespace Project
             this.password = password;
         }
 
+        public void setlogId(int id)
+        {
+            logId = id;
+        }
+        
+        public int getLogId()
+        {
+            return logId;
+        }
         /// <summary>
         /// авторизация
         /// </summary>
@@ -33,12 +42,14 @@ namespace Project
         public int? signIn()
         {
             int? search = 0;
+            int Id = 0;
             try
             {
                 using (ProjectContext db = new ProjectContext())
                 {
-                    search = db.Employees.Where(c => c.Login == login & c.Password == password).Select(c => c.accesslvl).First();
-                    logId = search;
+                    search = db.Employees.Where(c => c.Login == login && c.Password == password).Select(c => c.accesslvl).First();
+                    Id = db.Employees.Where(c => c.Login == login && c.Password == password).Select(c => c.Id).First();
+                    setlogId(Id);
                 }
             }
             catch (Exception)
@@ -48,7 +59,7 @@ namespace Project
 
             return search;
         }
-
+  
         /// <summary>
         /// отображение проектов в лист
         /// </summary>
@@ -425,7 +436,11 @@ namespace Project
             }
             return result;
         }
-
+        /// <summary>
+        /// функция удаления документа из БД
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool deleteDoc(int id)
         {
             bool result = false;
@@ -435,6 +450,137 @@ namespace Project
                 {
                     Document e = db.Documents.FirstOrDefault(f => f.Id == id);
                     db.Documents.Remove(e);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// функция добавления проекта в БД
+        /// </summary>
+        /// <param name="tittle"></param>
+        /// <param name="price"></param>
+        /// <param name="description"></param>
+        /// <param name="wg"></param>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public bool addProject(Project project)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Projects.Add(project);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// функция удаления проекта из БД
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool deleteProject(int id)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    Project deletePj = db.Projects.FirstOrDefault(c => c.Id == id);
+                    var s = db.Tasks.Where(c => c.ProjectId == id).ToList();
+                    db.Tasks.RemoveRange(s);
+                    db.Projects.Remove(deletePj);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// функция возвращающая выбранный проект по ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Project getProjectById(int id)
+        {
+            Project project = new Project();
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    project = db.Projects.FirstOrDefault(c => c.Id == id);
+                    
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return project;
+        }
+        /// <summary>
+        /// функция изменения проекта
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns></returns>
+        public bool changeProject(Project project)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    Project pj = db.Projects.FirstOrDefault(c => c.Id == project.Id);
+                    pj.Title = project.Title;
+                    pj.Price = project.Price;
+                    pj.Description = project.Description;
+                    pj.WorkingGroupId = project.WorkingGroupId;
+                    pj.CustomerId = project.CustomerId;
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// функция добавления новой задачи в БД
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        public bool addTask(Task task)
+        {
+            bool result = false;
+            try
+            {
+                using (ProjectContext db = new ProjectContext())
+                {
+                    db.Tasks.Add(task);
                     db.SaveChanges();
                     result = true;
                 }

@@ -68,10 +68,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomersForm.cs">
+    <Compile Include="Forms\AddTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomersForm.Designer.cs">
+    <Compile Include="Forms\AddTaskForm.Designer.cs">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseEmployeeForm.Designer.cs">
+      <DependentUpon>ChooseEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseWGForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseWGForm.Designer.cs">
+      <DependentUpon>ChooseWGForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ChooseCustomerForm.Designer.cs">
+      <DependentUpon>ChooseCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\AddProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\AddProjectForm.Designer.cs">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\CustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\CustomersForm.Designer.cs">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AdminForms\EmployeesForm.cs">
@@ -132,7 +162,22 @@
     </Compile>
     <Compile Include="Src\Task.cs" />
     <Compile Include="Src\WorkingGroup.cs" />
-    <EmbeddedResource Include="CustomersForm.resx">
+    <EmbeddedResource Include="Forms\AddTaskForm.resx">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ChooseEmployeeForm.resx">
+      <DependentUpon>ChooseEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ChooseWGForm.resx">
+      <DependentUpon>ChooseWGForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ChooseCustomerForm.resx">
+      <DependentUpon>ChooseCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\AddProjectForm.resx">
+      <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\CustomersForm.resx">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminForms\EmployeesForm.resx">

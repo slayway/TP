@@ -81,7 +81,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(517, 262);
+            this.dataGridView2.Size = new System.Drawing.Size(278, 262);
             this.dataGridView2.TabIndex = 15;
             // 
             // label2
@@ -89,7 +89,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Yellow;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(866, 41);
+            this.label2.Location = new System.Drawing.Point(735, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(173, 16);
             this.label2.TabIndex = 16;
@@ -110,7 +110,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Yellow;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(698, 340);
+            this.button1.Location = new System.Drawing.Point(678, 340);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 39);
             this.button1.TabIndex = 18;
@@ -143,7 +143,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Yellow;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(1091, 340);
+            this.button2.Location = new System.Drawing.Point(868, 340);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 39);
             this.button2.TabIndex = 25;
@@ -154,7 +154,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Yellow;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(913, 340);
+            this.button3.Location = new System.Drawing.Point(773, 340);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 39);
             this.button3.TabIndex = 26;
@@ -166,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(195)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1279, 405);
+            this.ClientSize = new System.Drawing.Size(963, 405);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonDel1);
@@ -178,8 +178,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1295, 444);
-            this.MinimumSize = new System.Drawing.Size(1295, 444);
+            this.MaximumSize = new System.Drawing.Size(979, 444);
+            this.MinimumSize = new System.Drawing.Size(979, 444);
             this.Name = "EmployeesForm";
             this.Text = "Сотрудники и рабочие группы";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

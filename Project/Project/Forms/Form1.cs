@@ -12,7 +12,7 @@ namespace Project
 {
     public partial class AuthorizationForm : Form
     {
-
+        public int id;
         private DBHelper db = new DBHelper();
 
         public AuthorizationForm()
@@ -23,6 +23,7 @@ namespace Project
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
             signIn();
+
         }
 
         private void buttonSignIn_KeyDown(object sender, KeyEventArgs e)
@@ -46,7 +47,7 @@ namespace Project
 
                 db.setLogin(login);
                 db.setPassword(password);
-                var search = db.signIn();
+                var search = db.signIn();             
 
                 switch (search)
                 {
