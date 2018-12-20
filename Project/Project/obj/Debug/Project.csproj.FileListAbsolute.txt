@@ -58,3 +58,6 @@ F:\ПО\Project\Project\obj\Debug\Project.csproj.CopyComplete
 F:\ПО\Project\Project\obj\Debug\Project.exe
 F:\ПО\Project\Project\obj\Debug\Project.pdb
 F:\ПО\Project\Project\obj\Debug\Project.Documents.resources
+F:\ПО\Project\Project\obj\Debug\Project.EmployeesForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.ProjectsForm.resources
+F:\ПО\Project\Project\obj\Debug\Project.CustomersForm.resources

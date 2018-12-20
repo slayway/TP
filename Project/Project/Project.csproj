@@ -68,11 +68,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomersForm.Designer.cs">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\EmployeesForm.Designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Documents.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Documents.Designer.cs">
       <DependentUpon>Documents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ProjectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\ProjectsForm.Designer.cs">
+      <DependentUpon>ProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -114,6 +132,12 @@
     </Compile>
     <Compile Include="Src\Task.cs" />
     <Compile Include="Src\WorkingGroup.cs" />
+    <EmbeddedResource Include="CustomersForm.resx">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminForms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManagerForms\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\ProjectsForm.resx">
+      <DependentUpon>ProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

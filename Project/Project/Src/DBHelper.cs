@@ -61,16 +61,20 @@ namespace Project
                 using (ProjectContext db = new ProjectContext())
                 {
                     db.Projects.Load();
-                    var search = db.Projects.Select(c => new
-                    {
-                        ID = c.Id,
-                        Название = c.Title,
-                        Цена = c.Price,
-                        Описание = c.Description,
-                        ID_Заказчика = c.CustomerId,
-                        ID_РабГруппы = c.WorkingGroupId                     
-                    }).ToList();
-                    bs.DataSource = search;
+                    var projects = (from pj in db.Projects
+                                    join c in db.Customers on pj.CustomerId equals c.Id
+                                    join w in db.WorkingGroups on pj.WorkingGroupId equals w.Id
+                                    select new
+                                    {
+                                        ID = pj.Id,
+                                        Название = pj.Title,
+                                        Цена = pj.Price,
+                                        Описание = pj.Description,
+                                        Заказчик = c.Organization,
+                                        Рабочая_Группа = w.Title
+                                    }).ToList();
+
+                    bs.DataSource = projects;
                 }
             }
             catch (Exception)
@@ -93,37 +97,23 @@ namespace Project
             {
                 using (ProjectContext db = new ProjectContext())
                 {
+                    var tasks = (from t in db.Tasks
+                                 join c in db.Employees on t.CreatorId equals c.Id
+                                 join e in db.Employees on t.ExecutorId equals e.Id
+                                 where t.ProjectId == id
+                                 select new
+                                 {
+                                     ID = t.Id,
+                                     Описание = t.Description,
+                                     Дата_создания = t.DateOfCreate,
+                                     План_дата_заверш = t.PlanedImpDate,
+                                     ДатаЗавершения = t.ActualImpDate,
+                                     Статус = t.Status,
+                                     Создатель = c.LastName,
+                                     Исполнитель = e.LastName
+                                 }).ToList();
 
-                   /* var search = db.Tasks.Join(
-                           db.Projects,
-                           p => p.Id,
-                           t => t.TaskId,
-                           (task, project) => new
-                           {
-                               ID = project.TaskId,
-                               Описание = task.Description,
-                               ДатаСоздания = task.DateOfCreate,
-                               ПлановаяДатаРеализации = task.PlanedImpDate,
-                               ФактическаяДатаРеализации = task.ActualImpDate,
-                               Статус = task.Status,
-                           }).Where(p => p.ID == id).ToList(); */
-                           
-                   var search = db.Tasks
-                        .Where(c => c.ProjectId == id)
-                        .Select(c => new 
-                        {
-                                ID = c.Id,
-                                Описание = c.Description,
-                                Дата_создания = c.DateOfCreate,
-                                План_дата_заверш = c.PlanedImpDate,
-                                //ДатаЗавершения = c.ActualImpDate,
-                                Статус = c.Status,
-                                ID_Создателя = c.CreatorId,
-                                ID_Исполнителя = c.ExecutorId
-                        }
-                        ).ToList();
-
-                   bs.DataSource = search;
+                   bs.DataSource = tasks;
                     
                 }
             }
@@ -147,56 +137,62 @@ namespace Project
                 switch (choise)
                 {
                     case 1:
-                  
-                      var search = db.Tasks
-                            .Where(c => c.ProjectId == id)
-                            .Select(c => new
-                            {
-                                ID = c.Id,
-                                Описание = c.Description,
-                                Дата_создания = c.DateOfCreate,
-                                План_дата_заверш = c.PlanedImpDate,
-                              //ActualDate = c.ActualImpDate,
-                                Статус = c.Status,
-                                ID_Создателя = c.CreatorId,
-                                ID_Исполнителя = c.ExecutorId
-                            }
-                            ).OrderBy(t => t.ID_Создателя).ToList();
+
+                        var search = (from t in db.Tasks
+                                     join c in db.Employees on t.CreatorId equals c.Id
+                                     join e in db.Employees on t.ExecutorId equals e.Id
+                                     where t.ProjectId == id
+                                     orderby t.CreatorId
+                                     select new
+                                     {
+                                         ID = t.Id,
+                                         Описание = t.Description,
+                                         Дата_создания = t.DateOfCreate,
+                                         План_дата_заверш = t.PlanedImpDate,
+                                         ДатаЗавершения = t.ActualImpDate,
+                                         Статус = t.Status,
+                                         Создатель = c.LastName,
+                                         Исполнитель = e.LastName
+                                     }).ToList();
                         bs.DataSource = search;
                         break;
 
                     case 2:
-                        search = db.Tasks
-                            .Where(c => c.ProjectId == id)
-                            .Select(c => new
-                            {
-                                ID = c.Id,
-                                Описание = c.Description,
-                                Дата_создания = c.DateOfCreate,
-                                План_дата_заверш = c.PlanedImpDate,
-                                //ActualDate = c.ActualImpDate,
-                                Статус = c.Status,
-                                ID_Создателя = c.CreatorId,
-                                ID_Исполнителя = c.ExecutorId
-                            }
-                            ).OrderBy(t => t.Дата_создания).ToList();
+                        search = (from t in db.Tasks
+                                  join c in db.Employees on t.CreatorId equals c.Id
+                                  join e in db.Employees on t.ExecutorId equals e.Id
+                                  where t.ProjectId == id
+                                  orderby t.DateOfCreate
+                                  select new
+                                  {
+                                      ID = t.Id,
+                                      Описание = t.Description,
+                                      Дата_создания = t.DateOfCreate,
+                                      План_дата_заверш = t.PlanedImpDate,
+                                      ДатаЗавершения = t.ActualImpDate,
+                                      Статус = t.Status,
+                                      Создатель = c.LastName,
+                                      Исполнитель = e.LastName
+                                  }).ToList();
                         bs.DataSource = search;
                         break;
                     case 3:
-                        search = db.Tasks
-                            .Where(c => c.ProjectId == id)
-                            .Select(c => new
-                            {
-                                ID = c.Id,
-                                Описание = c.Description,
-                                Дата_создания = c.DateOfCreate,
-                                План_дата_заверш = c.PlanedImpDate,                              
-                                //АктуальнаяДата = c.ActualImpDate,
-                                Статус = c.Status,
-                                ID_Создателя = c.CreatorId,
-                                ID_Исполнителя = c.ExecutorId
-                            }
-                            ).OrderBy(t => t.ID_Исполнителя).ToList();
+                        search = (from t in db.Tasks
+                                  join c in db.Employees on t.CreatorId equals c.Id
+                                  join e in db.Employees on t.ExecutorId equals e.Id
+                                  where t.ProjectId == id
+                                  orderby t.ExecutorId
+                                  select new
+                                  {
+                                      ID = t.Id,
+                                      Описание = t.Description,
+                                      Дата_создания = t.DateOfCreate,
+                                      План_дата_заверш = t.PlanedImpDate,
+                                      ДатаЗавершения = t.ActualImpDate,
+                                      Статус = t.Status,
+                                      Создатель = c.LastName,
+                                      Исполнитель = e.LastName
+                                  }).ToList();
                         bs.DataSource = search;
                         break;
 
@@ -274,15 +270,20 @@ namespace Project
                 using (ProjectContext db = new ProjectContext())
                 {
                     db.Employees.Load();
-                    bs.DataSource = db.Employees.Select(c => new
-                    {
-                        ID = c.Id,
-                        Имя = c.FirstName,
-                        Фамилия = c.LastName,
-                        Телефон = c.Phone,
-                        Ур_Доступа = c.accesslvl,
-                        Id_РабГруппы = c.WorkingGroupId
-                    }).ToList();
+
+                    var emp = (from empl in db.Employees
+                               join w in db.WorkingGroups on empl.WorkingGroupId equals w.Id
+                               select new
+                               {
+                                   ID = empl.Id,
+                                   Имя = empl.FirstName,
+                                   Фамилия = empl.LastName,
+                                   Телефон = empl.Phone,
+                                   Ур_Доступа = empl.accesslvl,
+                                   Рабочая_Группа = w.Title
+                               }).ToList();
+
+                    bs.DataSource = emp;
 
                 }
             }
